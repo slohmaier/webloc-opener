@@ -1,0 +1,30 @@
+## .NET build output
+bin/
+obj/
+
+## Visual Studio
+.vs/
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+
+## Rider / Resharper
+.idea/
+*.DotSettings.user
+
+## VS Code
+.vscode/
+
+## OS junk
+Thumbs.db
+.DS_Store
+desktop.ini
+
+## NuGet
+*.nupkg
+*.snupkg
+.nuget/
+
+## Publish output
+publish/
