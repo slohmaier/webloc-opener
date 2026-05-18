@@ -22,8 +22,10 @@ webloc-opener.exe --unregister      Remove the handler
 
 ## Setup
 
-1. Download the latest `webloc-opener.exe` from the [Releases](https://github.com/slohmaier/webloc-opener/releases) page.
-2. Put it somewhere stable, e.g. `%LOCALAPPDATA%\WeblocOpener\webloc-opener.exe`.
+1. Download the latest release from the [Releases](https://github.com/slohmaier/webloc-opener/releases) page:
+   - `webloc-opener-<version>-win-x64.exe` for x64 PCs (Intel/AMD)
+   - `webloc-opener-<version>-win-arm64.exe` for ARM64 (Surface Pro X etc.)
+2. Rename it to `webloc-opener.exe` and put it somewhere stable, e.g. `%LOCALAPPDATA%\WeblocOpener\webloc-opener.exe`.
 3. Run once with `--register` to register the file type:
 
    ```powershell
@@ -52,6 +54,17 @@ dotnet publish -c Release -r win-x64 `
 The single-file exe ends up in `WeblocOpener\bin\Release\net8.0-windows\win-x64\publish\webloc-opener.exe`.
 
 For ARM64 (Surface Pro X etc.), replace `win-x64` with `win-arm64`.
+
+## Cutting a release
+
+Releases are built and published by the [`release.yml`](.github/workflows/release.yml) GitHub Actions workflow on tag push:
+
+```powershell
+git tag v1.0.0
+git push --tags
+```
+
+The workflow builds win-x64 and win-arm64 single-file self-contained exes, attaches them to a GitHub Release whose tag matches, and auto-generates release notes from the commits since the previous tag. You can also trigger a dry-run build (no release published) via the **Run workflow** button in the Actions tab.
 
 ## How it works
 
